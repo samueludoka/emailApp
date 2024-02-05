@@ -1,2 +1,6 @@
-package org.applicationsmart.utils;public class MailType {
+package org.applicationsmart.utils;
+
+public enum MailType {
+    INBOX, SENT, DRAFT
+
 }

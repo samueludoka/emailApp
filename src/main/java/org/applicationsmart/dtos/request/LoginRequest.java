@@ -1,2 +1,9 @@
-package org.applicationsmart.dtos.request;public class LoginRequest {
+package org.applicationsmart.dtos.request;
+
+import lombok.Data;
+
+@Data
+public class LoginRequest {
+    private String domainName;
+    private String password;
 }
