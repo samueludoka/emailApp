@@ -11,5 +11,5 @@ public class SendEmailRequest {
     private String domainName;
     private String title;
     private String body;
-    private String reciepiantEmail;
+    private String reciepentEmail;
 }
