@@ -5,13 +5,10 @@ import org.applicationsmart.data.repository.UserRepository;
 import org.applicationsmart.dtos.request.LoginRequest;
 import org.applicationsmart.dtos.request.RegisterRequest;
 import org.applicationsmart.dtos.request.SendEmailRequest;
-import org.applicationsmart.exception.DomainNameException;
-import org.applicationsmart.exception.InvalidLoginDetails;
-import org.applicationsmart.exception.UserExistException;
+import org.applicationsmart.exception.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.applicationsmart.utils.Verification;
-import org.applicationsmart.exception.InvalidDetailsFormat;
 
 import java.util.Optional;
 

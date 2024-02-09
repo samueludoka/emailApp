@@ -43,6 +43,7 @@ public class EmailServiceImpl implements EmailAppService{
     public String login(String domainName) {
         EmailApp emailApp =findUserDomainName(domainName);
         if(emailApp == null)throw new InvalidLoginDetails("Invalid login Details");
+        if (emailApp.isLogIn()) throw new UserExistException2("Already login");
         emailApp.setLogIn(true);
         emailAppRepository.save(emailApp);
         return emailApp.getUserId();

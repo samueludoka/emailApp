@@ -5,10 +5,7 @@ import org.applicationsmart.data.repository.UserRepository;
 import org.applicationsmart.dtos.request.LoginRequest;
 import org.applicationsmart.dtos.request.RegisterRequest;
 import org.applicationsmart.dtos.request.SendEmailRequest;
-import org.applicationsmart.exception.DomainNameException;
-import org.applicationsmart.exception.InvalidDetailsFormat;
-import org.applicationsmart.exception.InvalidEmailException;
-import org.applicationsmart.exception.InvalidLoginDetails;
+import org.applicationsmart.exception.*;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -79,6 +76,23 @@ class UserServiceImplTest {
         userService.register(registerRequest);
         LoginRequest loginRequest = new LoginRequest("delighted@small.com","opeoluwa23");
         assertThrows(InvalidDetailsFormat.class,()->userService.login(loginRequest));
+    }
+    @Test
+    public void testThatWhenUserLogsInAndLogsInAgainThrowsException(){
+        LoginRequest loginRequest = new LoginRequest();
+        RegisterRequest registerRequest = new RegisterRequest();
+        registerRequest.setName("tobi");
+        registerRequest.setAge("18");
+        registerRequest.setPhoneNumber("07034356733");
+        registerRequest.setPassword("password");
+        registerRequest.setDomainName("tobi111");
+        userService.register(registerRequest);
+        loginRequest.setDomainName("tobi111@small.com");
+        loginRequest.setPassword("password");
+        userService.login(loginRequest);
+        loginRequest.setDomainName("tobi111@small.com");
+        loginRequest.setPassword("password");
+        assertThrows(UserExistException2.class, () -> userService.login(loginRequest));
     }
     @Test
     public void testThatWhenRegisterUserSendEmailToUnRegisterUserThrowsAnException(){
